@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+{{ template "header" . }}
+
+<body>
+
+{{ template "global-navigator" .}}
+<div class="container">
+    <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th>##</th>
+            <th>NAME</th>
+            <th>FOLLOW</th>
+            <th>FOLLOWER</th>
+        </tr>
+
+        <tr>
+            <th><img src="{{.Me.ProfileImageURL}}" width="64" height="64"></th>
+            <th>{{.Me.Name}}</th>
+            <th>{{.Me.FriendsCount}}</th>
+            <th>{{.Me.FollowersCount}}</th>
+        </tr>
+
+        </thead>
+        {{$safe := .safe}}
+        {{range $tweet := .tweets}}
+        <tr>
+            <th>{{$tweet.CreateAt}}</th>
+            <th><img src="{{$tweet.User.ProfileImageURL}}" width="64" height="64"></th>
+            <th>{{call $safe $tweet.Text}}</th>
+            <th>{{$tweet.User.ScreenName}}</th>
+        </tr>
+        {{end}}
+    </table>
+    {{ template "footer" .}}
+</div>
+</body>
+</html>

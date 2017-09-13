@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    {{ template "header" . }}
+
+<body>
+
+{{ template "global-navigator" .}}
+<div class="container">
+<table class="table">
+    <thead class="thead-inverse">
+    <tr>
+        <th>RANK</th>
+        <th>PICTURE</th>
+        <th>NAME</th>
+        <th>FOLLOWER</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{$add := .add}}
+    {{range $i, $person := .people}}
+    {{if $person.Me}}
+    <tr>
+        <td bgcolor="#FFFF99"><strong>{{call $add $i 1}}位</strong></td>
+        <td bgcolor="#FFFF99"><img src="{{$person.Image}}" width="64" height="64"></td>
+        <td bgcolor="#FFFF99"><strong>{{$person.Name}}(@{{$person.ScreenName}})</strong></td>
+        <td bgcolor="#FFFF99"><strong>{{$person.Followers}}人</strong></span></td>
+    </tr>
+    {{else}}
+    <tr>
+        <td>{{call $add $i 1}}位</td>
+        <td><img src="{{$person.Image}}" width="64" height="64"></td>
+        <td>{{$person.Name}}(@{{$person.ScreenName}})</td>
+        <td>{{$person.Followers}}人</td>
+    </tr>
+    {{end}}
+    {{end}}
+    </tbody>
+</table>
+</div>
+
+    {{ template "footer" .}}
+</body>
+</html>
+
