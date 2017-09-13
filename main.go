@@ -132,7 +132,7 @@ func main() {
 	r.POST("/tweet", func(c *gin.Context) {
 		client = twitter.TwitterClient(*tokens)
 
-		twitter.UpdateTweet(client, c.PostForm("for"),c.PostForm("writing"))
+		twitter.UpdateTweet(client, c.PostForm("for"), c.PostForm("writing"))
 		c.HTML(http.StatusOK, "index.tmpl", gin.H{
 			"Me": twitter.GetClientData(client),
 		})
@@ -140,25 +140,3 @@ func main() {
 
 	r.Run(":8080")
 }
-## prompt
-function fish_prompt 
- set_color --bold green white 
- echo (prompt_pwd) ">><((( *>  "
-end
-
-## cd後にls 
-function cd 
-    builtin cd $argv; and ls
-end
-
-#gitのbranch名出す
-function git_branch
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
-end
-
-#右prompt
-function fish_right_prompt
-	echo (git_branch)
-end
-
-
