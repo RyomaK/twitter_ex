@@ -5,31 +5,24 @@
 
 <body>
 
-
 {{ template "global-navigator" .}}
 <div class="container">
-<table class="table">
-    <thead class="thead-inverse">
-    <tr>
-        <th>TIME</th>
-        <th>PICTURE</th>
-        <th>TEXT</th>
-        <th>USERNAME</th>
-        <th>SCREENNAME</th>
-    </tr>
-    </thead>
-    {{$safe := .safe}}
-    {{range $tweet := .tweets}}
-<tr>
-    <th>{{$tweet.CreateAt}}</th>
-    <th><img src="{{$tweet.User.ProfileImageURL}}" width="64" height="64"></th>
-    <th>{{call $safe $tweet.Text}}</th>
-    <th>{{$tweet.User.Name}}</th>
-    <th>@{{$tweet.User.ScreenName}}</th>
-</tr>
-    {{end}}
-</table>
+    <h3>つぶやく(韻を返します)</h3>
+    <h3>英字，記号は禁止です</h3>
+    <form action="tweet" method="post">
+        <p>
+        @<input  type="text" name="for">
+        </p>
+        <p>
+            <textarea name="writing" rows="4" cols="40"></textarea>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-info">SENT</button>
+        </p>
+    </form>
+
     {{ template "footer" .}}
 </div>
+
 </body>
 </html>

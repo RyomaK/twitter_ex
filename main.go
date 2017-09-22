@@ -6,7 +6,7 @@ import (
 	"html/template"
 	"log"
 
-	"github.com/RyomaK/treasure2017/mid/RyomaK/webapp/twitter"
+	"github.com/RyomaK/twitter_ex/twitter"
 
 	"github.com/gin-gonic/gin"
 )

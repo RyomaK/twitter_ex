@@ -1,35 +1,46 @@
-<!DOCTYPE html>
-<html lang="ja">
+{{define "header"}}
 
-{{ template "header" . }}
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<body>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+{{end}}
 
+{{ define "global-navigator" }}
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="btn btn-info" data-toggle="collapse"data-target="#navbarEexample8">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar">メニュー</span>
+            </button>
+            <a class="navbar-brand" href="/index">
+                KRITTER
+            </a>
+        </div>
 
-{{ template "global-navigator" .}}
-<div class="container">
-<table class="table">
-    <thead class="thead-inverse">
-    <tr>
-        <th>TIME</th>
-        <th>PICTURE</th>
-        <th>TEXT</th>
-        <th>USERNAME</th>
-        <th>SCREENNAME</th>
-    </tr>
-    </thead>
-    {{$safe := .safe}}
-    {{range $tweet := .tweets}}
-<tr>
-    <th>{{$tweet.CreateAt}}</th>
-    <th><img src="{{$tweet.User.ProfileImageURL}}" width="64" height="64"></th>
-    <th>{{call $safe $tweet.Text}}</th>
-    <th>{{$tweet.User.Name}}</th>
-    <th>@{{$tweet.User.ScreenName}}</th>
-</tr>
-    {{end}}
-</table>
-    {{ template "footer" .}}
-</div>
-</body>
-</html>
+        <div class="collapse navbar-collapse" id="navbarEexample8">
+            <ul class="nav navbar-nav">
+                <li><a href="/ranking">フォロワーランキング</a></li>
+                <li class="active"><a href="/home">タイムライン</a></li>
+                <li class="active"><a href="/index">韻ツイート</a></li>
+            </ul>
+            <p class="navbar-text navbar-right">ようこそ <a href="/mypage" class="navbar-link">{{.Me.Name}}</a> さん。</p>
+        </div>
+    </div>
+</nav>
+{{end}}
+
+{{ define "footer" }}
+<footer>
+    <p> created by <a href="https://github.com/RyomaK">Ryoma</a></p>
+</footer>
+{{end}}

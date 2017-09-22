@@ -65,5 +65,5 @@ func (p People) Less(i, j int) bool { return p[i].Followers < p[j].Followers }
 
 func SortLine(p People) People {
 	sort.Sort(sort.Reverse(p))
-
+	return p
 }

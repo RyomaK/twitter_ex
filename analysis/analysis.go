@@ -5,13 +5,14 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/ikawaha/kagome/tokenizer"
 
-	"github.com/RyomaK/treasure2017/mid/RyomaK/webapp/regexp"
+	"github.com/RyomaK/twitter_ex/regexp"
 )
 
 type Word struct {
 	Word      string
 	WordClass string
 }
+
 //形態素解析
 func analisys(str string) *[]Word {
 	t := tokenizer.New()
@@ -35,6 +36,7 @@ func analisys(str string) *[]Word {
 	}
 	return words
 }
+
 //韻を生成
 func rhyme(str string) string {
 	doc, err := goquery.NewDocument("https://kujirahand.com/web-tools/Words.php?m=boin-search&opt=comp&key=" + str)
@@ -53,6 +55,7 @@ func rhyme(str string) string {
 	}
 	return str
 }
+
 //韻を返す
 func GetRhyme(str string) string {
 	if !regexp.IsOnlyJapanese(str) {

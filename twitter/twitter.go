@@ -3,10 +3,10 @@ package twitter
 import (
 	"fmt"
 
-	"github.com/RyomaK/treasure2017/mid/RyomaK/webapp/analysis"
+	"github.com/RyomaK/twitter_ex/analysis"
 	"github.com/dghubble/go-twitter/twitter"
 
-	"github.com/RyomaK/treasure2017/mid/RyomaK/webapp/regexp"
+	"github.com/RyomaK/twitter_ex/regexp"
 	"github.com/dghubble/oauth1"
 	"log"
 )
